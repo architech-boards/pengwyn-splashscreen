@@ -1,0 +1,4 @@
+#!/bin/bash
+cd ../yocto/qtcreator/bin
+./qtcreator.sh
+exit 0

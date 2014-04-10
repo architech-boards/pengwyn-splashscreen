@@ -1,0 +1,3 @@
+#!/bin/bash
+firefox http://architechboards-pengwyn.readthedocs.org/en/latest/
+exit 0
