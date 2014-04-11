@@ -2,5 +2,5 @@
 cd ../yocto/eclipse
 export PATH=$PATH:/opt/poky/1.2.1/sysroots/i686-pokysdk-linux/usr/bin/armv7a-vfp-neon-poky-linux-gnueabi
 /opt/poky/1.2.1/environment-setup-armv7a-vfp-neon-poky-linux-gnueabi
-/home/architech/architech_sdk/architech/pengwyn/yocto/eclipse/eclipse -vm /home/architech/architech_sdk/architech/pengwyn/java/bin/ -data /home/architech/architech_sdk/architech/pengwyn/workspace --vmargs --XX:PermSize=256M
+@BASEROOT_SDK@/yocto/eclipse/eclipse -vm @BASEROOT_SDK@/java/bin/ -data @BASEROOT_SDK@/workspace --vmargs --XX:PermSize=256M
 exit 0
