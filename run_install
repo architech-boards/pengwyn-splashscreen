@@ -51,6 +51,11 @@ function get_remote_version {
 }
 
 ###########################################################################################################
+# Check SUDO_PASSWORD
+
+[ "${SUDO_PASSWORD}" == "" ] && { SUDO_PASSWORD=`zenity --password --text "Please, insert sudo password"`; }
+
+###########################################################################################################
 # Script pre-install
 
 cd $BASEROOT_SDK
@@ -107,8 +112,6 @@ install_file()
 
 install_qt_local_libraries()
 {
-	local SUDO_PASSWORD
-	SUDO_PASSWORD='architech\n'
 	echo Install $CMD
 	URL=`echo $LINE | awk -F"@" '{print $2}'`
 	FILE=$CMD.tgz
@@ -198,8 +201,6 @@ do
 							sed -i "s|@BASEROOT_SDK@|${BASEROOT_SDK}|g" ${BASEROOT_SDK}/splashscreen/run_eclipse
 							;;
 						"toolchain")
-							local SUDO_PASSWORD
-							SUDO_PASSWORD='architech\n'
 							echo Install $CMD
 							URL=`echo $LINE | awk -F"@" '{print $2}'`
 							FILE=`echo $LINE | awk -F"@" '{print $3}'`
