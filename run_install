@@ -210,6 +210,18 @@ do
 							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
 							rm -f $FILE
 							sed -i "s|@BASEROOT_SDK@|${BASEROOT_SDK}|g" /opt/poky/1.2.1/environment-setup-armv7a-vfp-neon-poky-linux-gnueabi
+							[ -d sysroot ] || { mkdir sysroot; }
+							;;
+						"yocto")
+							echo Install $CMD
+							URL=`echo $LINE | awk -F"@" '{print $2}'`
+							FILE=`echo $LINE | awk -F"@" '{print $3}'`
+							#!#wget --timeout=${WGET_TIMEOUT} ${URL}
+							#!#[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
+							cp ~/Desktop/pengwyn/yocto.tgz ${BASEROOT_SDK}
+							tar -zxf $FILE
+							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
+							rm -f $FILE
 							;;
 						"qt-arm")
 							install_qt_local_libraries
