@@ -171,7 +171,7 @@ do
 							then
 								do_backup "java"
 								rm -rf java
-								wget --timeout=${WGET_TIMEOUT} ${URL}
+								wget --timeout=${WGET_TIMEOUT} ${URL} 
 								[ $? -eq 0 ] || { rm -f $FILE; undo_backup "java"; rm conf/sdk.txt; internet_error; }
 								mkdir java
 								tar -zxf $FILE -C java
@@ -220,7 +220,7 @@ do
 							rm -f $FILE
 							cd ${BASEROOT_SDK}/yocto
 							source poky/oe-init-build-env
-							set_cpu_localconf ./conf
+							set_cpu_localconf ${NR_CPUS} ./conf
 							cd ${BASEROOT_SDK}
 							;;
 						"qt-arm")
