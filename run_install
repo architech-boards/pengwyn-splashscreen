@@ -36,7 +36,7 @@ BASEROOT_SDK=${ROOT_DIRECTORY}
 NR_CPUS=`grep -c ^processor /proc/cpuinfo`
 WGET_TIMEOUT=60
 
-	
+
 ###########################################################################################################
 # Get in remote the last version of the package
 # S1 url remote 
@@ -95,9 +95,9 @@ install_file()
 	FILE=$CMD.tgz
 	do_backup yocto/$CMD
 	rm -rf yocto/$CMD
-	#!#wget --timeout=${WGET_TIMEOUT} ${URL}
-	#!#[ $? -eq 0 ] || { rm -f $FILE; undo_backup $CMD; rm conf/sdk.txt; internet_error; }
-	cp ~/Desktop/pengwyn/qtcreator.tgz ${BASEROOT_SDK}
+	wget --timeout=${WGET_TIMEOUT} ${URL}
+	[ $? -eq 0 ] || { rm -f $FILE; undo_backup $CMD; rm conf/sdk.txt; internet_error; }
+	#!#cp ~/Desktop/pengwyn/qtcreator.tgz ${BASEROOT_SDK}
 	tar -zxf $FILE
 	find yocto/${CMD} -type f -exec sed -i "s|@BASEROOT_SDK@|${BASEROOT_SDK}|g" '{}' \;
 	find yocto/${CMD} -type f -exec sed -i "s|@BASEHOME@|${HOME}|g" '{}' \;
@@ -110,9 +110,9 @@ install_qt_local_libraries()
 	echo Install $CMD
 	URL=`echo $LINE | awk -F"@" '{print $2}'`
 	FILE=$CMD.tgz
-	#!#wget --timeout=${WGET_TIMEOUT} ${URL}
-	#!#[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
-	cp ~/Desktop/pengwyn/$FILE ${BASEROOT_SDK}
+	wget --timeout=${WGET_TIMEOUT} ${URL}
+	[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
+	#!#cp ~/Desktop/pengwyn/$FILE ${BASEROOT_SDK}
 	do_sudo "tar -zxf $FILE -C /usr/local"
     	#sudo find /usr/local/Trolltech -type f -exec sed -i "s|@BASEROOT_SDK@|${BASEROOT_SDK}|g" '{}' \;
 	#[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
@@ -152,8 +152,8 @@ do
 						# documentation, always updates it
 						"doc")
 							echo "DOC"
-                            				URL=`echo $LINE | awk -F"@" '{print $2}'`
-                            				FILE=`echo $LINE | awk -F"@" '{print $3}'`
+                            URL=`echo $LINE | awk -F"@" '{print $2}'`
+                            FILE=`echo $LINE | awk -F"@" '{print $3}'`
 							mkdir docs;
 							wget --timeout=${WGET_TIMEOUT} ${URL}
 							[ $? -eq 0 ] || { rm -f $FILE; internet_error; }
@@ -171,7 +171,7 @@ do
 							then
 								do_backup "java"
 								rm -rf java
-								wget --timeout=${WGET_TIMEOUT} ${URL} 
+								wget --timeout=${WGET_TIMEOUT} ${URL}
 								[ $? -eq 0 ] || { rm -f $FILE; undo_backup "java"; rm conf/sdk.txt; internet_error; }
 								mkdir java
 								tar -zxf $FILE -C java
@@ -187,9 +187,9 @@ do
 							FILE=`echo $LINE | awk -F"@" '{print $3}'`
 							do_backup "yocto/eclipse"
 							rm -rf yocto/eclipse
-							#!#wget --timeout=${WGET_TIMEOUT} ${URL}
-							#!#[ $? -eq 0 ] || { rm -f $FILE; undo_backup "yocto/eclipse"; rm conf/sdk.txt; internet_error; }
-							cp ~/Desktop/pengwyn/eclipse.tgz ${BASEROOT_SDK}
+							wget --timeout=${WGET_TIMEOUT} ${URL}
+							[ $? -eq 0 ] || { rm -f $FILE; undo_backup "yocto/eclipse"; rm conf/sdk.txt; internet_error; }
+							#!#cp ~/Desktop/pengwyn/eclipse.tgz ${BASEROOT_SDK}
 							tar -zxf $FILE
 							[ $? -eq 0 ] || { rm -f $FILE; undo_backup "yocto/eclipse"; rm conf/sdk.txt; internet_error; }
 							rm -f $FILE
@@ -199,9 +199,9 @@ do
 							echo Install $CMD
 							URL=`echo $LINE | awk -F"@" '{print $2}'`
 							FILE=`echo $LINE | awk -F"@" '{print $3}'`
-							#!#wget --timeout=${WGET_TIMEOUT} ${URL}
-							#!#[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
-							cp ~/Desktop/pengwyn/toolchain.tgz ${BASEROOT_SDK}
+							wget --timeout=${WGET_TIMEOUT} ${URL}
+							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
+							#!#cp ~/Desktop/pengwyn/toolchain.tgz ${BASEROOT_SDK}
 							do_sudo "tar -zxf $FILE -C /opt"
 							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
 							rm -f $FILE
@@ -212,9 +212,9 @@ do
 							echo Install $CMD
 							URL=`echo $LINE | awk -F"@" '{print $2}'`
 							FILE=`echo $LINE | awk -F"@" '{print $3}'`
-							#!#wget --timeout=${WGET_TIMEOUT} ${URL}
-							#!#[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
-							cp ~/Desktop/pengwyn/yocto.tgz ${BASEROOT_SDK}
+							wget --timeout=${WGET_TIMEOUT} ${URL}
+							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
+							#!#cp ~/Desktop/pengwyn/yocto.tgz ${BASEROOT_SDK}
 							tar -zxf $FILE
 							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
 							rm -f $FILE
@@ -239,9 +239,9 @@ do
 							FILE=`echo $LINE | awk -F"@" '{print $3}'`
 							do_backup "workspace"
 							rm -f workspace
-							#!#wget --timeout=${WGET_TIMEOUT} $URL
-							#!#[ $? -eq 0 ] || { undo_backup "qtcreator/conf"; rm conf/sdk.txt; internet_error; }
-							cp ~/Desktop/pengwyn/workspace.tgz ${BASEROOT_SDK}
+							wget --timeout=${WGET_TIMEOUT} $URL
+							[ $? -eq 0 ] || { undo_backup "qtcreator/conf"; rm conf/sdk.txt; internet_error; }
+							#!#cp ~/Desktop/pengwyn/workspace.tgz ${BASEROOT_SDK}
 							tar -zxf $FILE
 							find workspace/ -type f -exec sed -i "s|@BASEROOT_SDK@|${BASEROOT_SDK}|g" '{}' \;
 							rm -f $FILE
