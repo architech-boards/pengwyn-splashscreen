@@ -1,10 +1,5 @@
 #!/bin/bash
 
-set -x 
-
-TEST_PATH=`pwd`
-[ "${TEST_PATH}" != "/home/architech/architech_sdk/architech/pengwyn/splashscreen" ] && { zenity --error --text "Path wrong. This script must be launched in:\n/home/architech/architech_sdk/architech/pengwyn/splashscreen"; exit 2; }
-
 #######################################################################################################################
 # if the father is the splashscreen then will opens a new terminal
 
