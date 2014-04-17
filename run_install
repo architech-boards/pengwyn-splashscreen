@@ -208,7 +208,6 @@ do
 							FILE=`echo $LINE | awk -F"@" '{print $3}'`
 							wget --timeout=${WGET_TIMEOUT} ${URL}
 							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
-							#!#cp ~/Desktop/pengwyn/toolchain.tgz ${BASEROOT_SDK}
 							do_sudo "tar -zxf $FILE -C /opt"
 							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
 							rm -f $FILE
@@ -221,7 +220,6 @@ do
 							FILE=`echo $LINE | awk -F"@" '{print $3}'`
 							wget --timeout=${WGET_TIMEOUT} ${URL}
 							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
-							#!#cp ~/Desktop/pengwyn/yocto.tgz ${BASEROOT_SDK}
 							tar -zxf $FILE
 							[ $? -eq 0 ] || { rm -f $FILE; rm conf/sdk.txt; internet_error; }
 							rm -f $FILE
