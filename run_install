@@ -62,6 +62,11 @@ chmod 777 pre-script.sh
 rm pre-script.sh
 
 ###########################################################################################################
+# Setup local.conf
+
+set_cpu_localconf ${NR_CPUS} ./yocto/build/conf
+
+###########################################################################################################
 # Versioning installation if not exist, 1 is the start version in remote server
 
 [ ! -f conf/versions ] && { debecho "conf/versions created"; mkdir -p ${BASEROOT_SDK}/conf; echo "toolchain:0" > ${BASEROOT_SDK}/conf/versions; echo "sdk:0" >> ${BASEROOT_SDK}/conf/versions; }
