@@ -1,0 +1,83 @@
+<style type="text/css">
+    .TFtable{
+        width:100%; 
+        border-collapse:collapse; 
+    }
+    .TFtable td{ 
+        padding:2px;
+        border:#AAAAAA 1px solid;
+    }
+    /* provide some minimal visual accomodation for IE8 and below */
+    .TFtable tr{
+        background: #CCCCCC;
+    }
+    /*  Define the background color for all the ODD background rows  */
+    .TFtable tr:nth-child(odd){ 
+        background: #CCCCCC;
+    }
+    /*  Define the background color for all the EVEN background rows  */
+    .TFtable tr:nth-child(even){
+        background: #FFFFFF;
+    }
+</style>
+ArchiTech's <b>Tibidabo</b> board is a full featured, cheap and flexible board based on Texas Instruments AM3354 processor.<br>
+<br>
+Specifications:
+<table class="TFtable">
+    <tr>
+        <td valign="top">
+            <b>CPU</b>
+        </td>
+        <td>
+            TI AM3354
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <b>RAM</b>
+        </td>
+        <td>
+            256MB 
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <b>Network</b>
+        </td>
+        <td>
+            TI DP83848J 10/100 Ethernet Transceiver
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <b>USB</b>
+        </td>
+        <td>
+            USB 2.0 host<br>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <b>Flash memory</b>
+        </td>
+        <td>
+        MT29F1G08ABAEAWP:E: 1 Gb NAND Flash 128M X 8, 3.3 V, TSOP
+	</td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <b>Video</b>
+        </td>
+        <td>
+            DVI<br>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <b>SD</b>
+        </td>
+        <td>
+            Micro SD slot
+        </td>
+    </tr>
+</table>
