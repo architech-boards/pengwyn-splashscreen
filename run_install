@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#set -x
 #######################################################################################################################
 # Library check
 
@@ -106,7 +106,7 @@ fi
 # conf/bblayers.conf customization
 
 cd ${ROOT_DIRECTORY}/yocto/build
-TO_MATCH="poky/meta poky/meta-yocto poky/meta-yocto-bsp meta-pengwyn"
+TO_MATCH="poky/meta poky/meta-yocto poky/meta-yocto-bsp meta-ti meta-pengwyn"
 BBLAYERS=""
 BBLAYERS_FOUND=`sed -n "/^BBLAYERS /,/\"/ p" conf/bblayers.conf | sed "s|BBLAYERS||g" | sed "s|?||g" | sed "s|=||g" | sed "s|\"||g" | sed "s|\n||g" | sed "s|\\\\\\||g"`
 
