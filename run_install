@@ -25,7 +25,7 @@ cd libsh
 git pull
 [ $? -eq 0 ] || { message_fail_libsh; exit 1; }
 source lib.sh
-get_sudo_password
+get_sudo_password ${SUDO_PASSWORD}
 cd ..
 
 ###########################################################################################################
