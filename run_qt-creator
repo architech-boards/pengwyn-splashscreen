@@ -1,4 +1,7 @@
 #!/bin/bash
-cd ../qtcreator/bin
+cd ..
+source ./toolchain/environment
+source ./toolchain/sysroots/i686-pokysdk-linux/environment-setup.d/qtopia.sh
+cd qtcreator/bin
 ./qtcreator -settingspath ../conf
 exit 0
